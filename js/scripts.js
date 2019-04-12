@@ -7,9 +7,15 @@ function onlyOne(checkbox) {
     })
 }; //This function makes it so that only one size can be selected
 
-// Business Logic for orderDetails --------------------------------------------
+// Business Logic for Order --------------------------------------------
 
+function Order() {
+  this.pizzas = [];
+}
 
+Order.prototype.addPizza = function(pizza) {
+  this.pizzas.push(pizza);
+}
 
 // Business Logic for Pizzas -------------------------------------------------
 
@@ -39,3 +45,11 @@ $(function() {
     }) // Tracks the pizza toppings the user selected
   })
 });
+
+// Testing stuff
+
+var order = new Order();
+var pizza1 = new Pizza("XL", ["Mushrooms", "Onions", "Black Olives"]);
+var pizza2 = new Pizza("SM", ["Green Peppers", "Pineapple", "Spinach"]);
+order.addPizza(pizza1);
+order.addPizza(pizza2);

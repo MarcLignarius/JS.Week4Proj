@@ -17,7 +17,26 @@
       <p>Site Intro</p>
     </div>
 <!-- This section is... -->
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <form>
+      <div class"form-group">
+        <h5>What size of pizza would you like to order? (Please pick one)</h5>
+        <input type="checkbox" name="size" onclick="onlyOne(this)" value="SM">Small (4 slices)<br>
+        <input type="checkbox" name="size" onclick="onlyOne(this)" value="MD">Medium (6 slices)<br>
+        <input type="checkbox" name="size" onclick="onlyOne(this)" value="LG">Large (8 slices)<br>
+        <input type="checkbox" name="size" onclick="onlyOne(this)" value="XL">Extra Large (12 slices)<br>
+      </div>
+      <br>
+      <div class="form-group">
+        <h5>What toppings would you like on your pizza? (Pick as many as you like)</h5>
+        <input type="checkbox" name="toppings" value="option1">Mushrooms<br>
+        <input type="checkbox" name="toppings" value="option2">Onions<br>
+        <input type="checkbox" name="toppings" value="option3">Black Olives<br>
+        <input type="checkbox" name="toppings" value="option4">Green Peppers<br>
+        <input type="checkbox" name="toppings" value="option5">Pineapple<br>
+        <input type="checkbox" name="toppings" value="option5">Spinach<br>
+      </div>
+      <button type="submit" class="btn btn-dark">Add To Order</button>
+    </form>
 <!-- As with the very first section, this section should generally not be edited. -->
   </div>
 </body>

@@ -24,6 +24,29 @@ Order.prototype.assignPizzaId = function() {
   return this.currentPizzaId;
 }
 
+Order.prototype.findPizza = function(id) {
+  for (var i=0; i< this.pizzas.length; i++) {
+    if (this.contacts[i]) {
+      if (this.pizzas[i].id == id) {
+        return this.pizzas[i];
+      }
+    }
+  };
+  return false;
+}
+
+Order.prototype.deletePizza = function(id) {
+  for (var i=0; i< this.pizzas.length; i++) {
+     if (this.pizzas[i]) {
+      if (this.pizzas[i].id == id) {
+        delete this.pizzas[i];
+        return true;
+      }
+    }
+  };
+  return false;
+}
+
 // Business Logic for Pizzas -------------------------------------------------
 
 function Pizza(size, toppings) {
@@ -35,28 +58,25 @@ Pizza.prototype.fullDescription = function() {
   return ("Size: " + this.size + " Toppings: " + this.toppings + ".");
 }
 
-// User Interface Logic
+// User Interface Logic --------------------------------------------------------
 
-$(function() {
-  $("form#addPizza").submit(function(event){
+var order = new Order();
+
+$(document).ready(function() {
+  $("form#new-pizza").submit(function(event) {
     event.preventDefault();
+    var size = [];
     $("input:checkbox[name=size]:checked").each(function() {
-      var size = [];
       size.push($(this).val());
       console.log("size", size);
     }) // Tracks the pizza size the user selected
+    var toppings = [];
     $("input:checkbox[name=toppings]:checked").each(function() {
-      var toppings = [];
       toppings.push($(this).val());
       console.log("toppings", toppings)
     }) // Tracks the pizza toppings the user selected
+    var newPizza = new Pizza(size, toppings); // Creates a new Pizza object
+    order.addPizza(newPizza); //Adds the pizza to the order
+    console.log("Pizzas", order.pizzas);
   })
 });
-
-// Testing stuff
-
-var order = new Order();
-var pizza1 = new Pizza("XL", ["Mushrooms", "Onions", "Black Olives"]);
-var pizza2 = new Pizza("SM", ["Green Peppers", "Pineapple", "Spinach"]);
-order.addPizza(pizza1);
-order.addPizza(pizza2);

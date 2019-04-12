@@ -51,21 +51,27 @@ Order.prototype.deletePizza = function(id) {
 
 function Pizza(size, toppings, price) {
   this.size = size,
-  this.toppings = toppings,
-  this.price = 0;
+  this.toppings = toppings
 }
 
-function getPizzaPrice() {
-  if(this.size === "small") {
-    this.price += 8;
-  } else if(this.size === "medium") {
-    this.price += 10;
-  } else if(this.size === "large") {
-      this.price += 12;
-  } else if(this.size === "extra large") {
-      this.price += 14;
+Pizza.prototype.getPizzaPrice = function(newPizza) {
+  var price = 0;
+  if(newPizza.size === "small") {
+    newPizza.price += 8;
+  } else if(newPizza.size === "medium") {
+    newPizza.price += 10;
+  } else if(newPizza.size === "large") {
+      newPizza.price += 12;
+  } else if(newPizza.size === "extra large") {
+      newPizza.price += 14;
   }
-}
+  if (newPizza.toppings.length === 0) {
+    price += 0;
+  } else {
+    price += newPizza.toppings.length;
+  }
+  return newPizza.price;
+};
 
 // User Interface Logic ---------
 var order = new Order();
@@ -119,5 +125,6 @@ $(document).ready(function() {
     var newPizza = new Pizza(size, toppings, price); // Creates a new Pizza object
     order.addPizza(newPizza); // Adds the pizza to the order
     displayOrder(order); // Displays all pizzas ordered
+    getPizzaPrice(newPizza);
   })
 })

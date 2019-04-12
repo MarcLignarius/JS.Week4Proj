@@ -20,6 +20,7 @@
     <form id="addPizza">
       <div class"form-group">
         <h5>What size of pizza would you like to order? (Please pick one)</h5>
+        <hr>
         <input type="checkbox" name="size" onclick="onlyOne(this)" value="SM">Small (4 slices)<br>
         <input type="checkbox" name="size" onclick="onlyOne(this)" value="MD">Medium (6 slices)<br>
         <input type="checkbox" name="size" onclick="onlyOne(this)" value="LG">Large (8 slices)<br>
@@ -28,6 +29,7 @@
       <br>
       <div class="form-group">
         <h5>What toppings would you like on your pizza? (Pick as many as you like)</h5>
+        <hr>
         <input type="checkbox" name="toppings" value="mushrooms">Mushrooms<br>
         <input type="checkbox" name="toppings" value="onions">Onions<br>
         <input type="checkbox" name="toppings" value="blackolives">Black Olives<br>
@@ -35,8 +37,20 @@
         <input type="checkbox" name="toppings" value="pineapple">Pineapple<br>
         <input type="checkbox" name="toppings" value="spinach">Spinach<br>
       </div>
+      <hr>
       <button type="submit" class="btn btn-dark">Add To Order</button>
     </form>
+    <hr>
+    <h5>Your current order:</h5>
+    <em>Click on a pizza to see more information</em>
+    <ul id="currentOrder">
+    </ul>
+    <div id="orderDetails">
+      <p>Size: <span class="size"></span></p>
+      <p>Toppings: <span class="toppings"></span></p>
+      <div id="buttons">
+      </div>
+    </div>
 <!-- As with the very first section, this section should generally not be edited. -->
   </div>
 </body>

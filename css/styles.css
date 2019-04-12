@@ -1,3 +1,9 @@
 #pizza-details {
   display: none;
 }
+
+button {
+  color: #fff;
+  background-color: #343a40;
+  border-color: #343a40;
+}

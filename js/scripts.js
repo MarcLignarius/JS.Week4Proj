@@ -49,13 +49,22 @@ Order.prototype.deletePizza = function(id) {
 
 // Business Logic for Pizza ---------------------------------------------------
 
-function Pizza(size, toppings) {
+function Pizza(size, toppings, price) {
   this.size = size,
-  this.toppings = toppings
+  this.toppings = toppings,
+  this.price = 0;
 }
 
-Pizza.prototype.fullDescription = function() {
-  return ("Size: " + this.size + " Toppings: " + this.toppings + ".");
+function getPizzaPrice() {
+  if(this.size === "small") {
+    this.price += 8;
+  } else if(this.size === "medium") {
+    this.price += 10;
+  } else if(this.size === "large") {
+      this.price += 12;
+  } else if(this.size === "extra large") {
+      this.price += 14;
+  }
 }
 
 // User Interface Logic ---------
@@ -65,7 +74,7 @@ function displayOrder(orderToDisplay) {
   var pizzasList = $("ul#current-order");
   var htmlForPizzaInfo = "";
   orderToDisplay.pizzas.forEach(function(pizza) {
-    htmlForPizzaInfo += "<li id=" + pizza.id + ">" + "A " + pizza.size + " pizza with " + pizza.toppings.join(', ') + "</li>";
+    htmlForPizzaInfo += "<li id=" + pizza.id + ">" + "A " + pizza.size + " pizza with " + pizza.toppings.join(', ') + "." + " Price: $" + pizza.price + "</li>";
   });
   pizzasList.html(htmlForPizzaInfo);
 };
@@ -75,6 +84,7 @@ function showPizza(pizzaId) {
   $("#pizza-details").show();
   $(".size").html(pizza.size);
   $(".toppings").html(pizza.toppings);
+  $(".price").html(pizza.price);
   var buttons = $("#buttons");
   buttons.empty();
   buttons.append("<button class='deleteButton' id=" + pizza.id + ">Delete</button>");
@@ -95,6 +105,7 @@ $(document).ready(function() {
   attachPizzaListeners();
   $("form#new-pizza").submit(function(event) {
     event.preventDefault();
+    var price = "";
     var size = [];
     $("input:checkbox[name=size]:checked").each(function() {
       size.push($(this).val());
@@ -105,7 +116,7 @@ $(document).ready(function() {
       toppings.push($(this).val());
       console.log("toppings", toppings)
     }) // Tracks the pizza toppings the user selected
-    var newPizza = new Pizza(size, toppings); // Creates a new Pizza object
+    var newPizza = new Pizza(size, toppings, price); // Creates a new Pizza object
     order.addPizza(newPizza); // Adds the pizza to the order
     displayOrder(order); // Displays all pizzas ordered
   })

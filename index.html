@@ -13,11 +13,11 @@
 <!-- This section is the header of the site. -->
   <div class="container">
     <div class="jumbotron">
-      <h1>Site Heading</h1>
-      <p>Site Intro</p>
+      <h1>Marco's Pizzeria</h1>
+      <em>Constructors and Prototypes: Epicodus Week 4 Project</em>
     </div>
 <!-- This section is... -->
-    <form>
+    <form id="addPizza">
       <div class"form-group">
         <h5>What size of pizza would you like to order? (Please pick one)</h5>
         <input type="checkbox" name="size" onclick="onlyOne(this)" value="SM">Small (4 slices)<br>
@@ -28,12 +28,12 @@
       <br>
       <div class="form-group">
         <h5>What toppings would you like on your pizza? (Pick as many as you like)</h5>
-        <input type="checkbox" name="toppings" value="option1">Mushrooms<br>
-        <input type="checkbox" name="toppings" value="option2">Onions<br>
-        <input type="checkbox" name="toppings" value="option3">Black Olives<br>
-        <input type="checkbox" name="toppings" value="option4">Green Peppers<br>
-        <input type="checkbox" name="toppings" value="option5">Pineapple<br>
-        <input type="checkbox" name="toppings" value="option5">Spinach<br>
+        <input type="checkbox" name="toppings" value="mushrooms">Mushrooms<br>
+        <input type="checkbox" name="toppings" value="onions">Onions<br>
+        <input type="checkbox" name="toppings" value="blackolives">Black Olives<br>
+        <input type="checkbox" name="toppings" value="greenpeppers">Green Peppers<br>
+        <input type="checkbox" name="toppings" value="pineapple">Pineapple<br>
+        <input type="checkbox" name="toppings" value="spinach">Spinach<br>
       </div>
       <button type="submit" class="btn btn-dark">Add To Order</button>
     </form>

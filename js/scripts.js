@@ -65,7 +65,7 @@ function displayOrder(orderToDisplay) {
   var pizzasList = $("ul#current-order");
   var htmlForPizzaInfo = "";
   orderToDisplay.pizzas.forEach(function(pizza) {
-    htmlForPizzaInfo += "<li id=" + pizza.id + ">" + pizza.size + " " + pizza.toppings + "</li>";
+    htmlForPizzaInfo += "<li id=" + pizza.id + ">" + "A " + pizza.size + " pizza with " + pizza.toppings.join(', ') + "</li>";
   });
   pizzasList.html(htmlForPizzaInfo);
 };

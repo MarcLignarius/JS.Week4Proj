@@ -7,10 +7,10 @@ function onlyOne(checkbox) {
     })
 }; //This function makes it so that only one size can be selected
 
-// Business Logic for Order --------------------------------------------
+// Business Logic for Order ----------------------------------------------------
 
 function Order() {
-  this.pizzas = [];
+  this.pizzas = [],
   this.currentPizzaId = 0
 }
 
@@ -26,7 +26,7 @@ Order.prototype.assignPizzaId = function() {
 
 Order.prototype.findPizza = function(id) {
   for (var i=0; i< this.pizzas.length; i++) {
-    if (this.contacts[i]) {
+    if (this.pizzas[i]) {
       if (this.pizzas[i].id == id) {
         return this.pizzas[i];
       }
@@ -37,7 +37,7 @@ Order.prototype.findPizza = function(id) {
 
 Order.prototype.deletePizza = function(id) {
   for (var i=0; i< this.pizzas.length; i++) {
-     if (this.pizzas[i]) {
+    if (this.pizzas[i]) {
       if (this.pizzas[i].id == id) {
         delete this.pizzas[i];
         return true;
@@ -47,7 +47,7 @@ Order.prototype.deletePizza = function(id) {
   return false;
 }
 
-// Business Logic for Pizzas -------------------------------------------------
+// Business Logic for Pizza ---------------------------------------------------
 
 function Pizza(size, toppings) {
   this.size = size,
@@ -58,11 +58,41 @@ Pizza.prototype.fullDescription = function() {
   return ("Size: " + this.size + " Toppings: " + this.toppings + ".");
 }
 
-// User Interface Logic --------------------------------------------------------
-
+// User Interface Logic ---------
 var order = new Order();
 
+function displayOrder(orderToDisplay) {
+  var pizzasList = $("ul#current-order");
+  var htmlForPizzaInfo = "";
+  orderToDisplay.pizzas.forEach(function(pizza) {
+    htmlForPizzaInfo += "<li id=" + pizza.id + ">" + pizza.size + " " + pizza.toppings + "</li>";
+  });
+  pizzasList.html(htmlForPizzaInfo);
+};
+
+function showPizza(pizzaId) {
+  var pizza = order.findPizza(pizzaId);
+  $("#pizza-details").show();
+  $(".size").html(pizza.size);
+  $(".toppings").html(pizza.toppings);
+  var buttons = $("#buttons");
+  buttons.empty();
+  buttons.append("<button class='deleteButton' id=" + pizza.id + ">Delete</button>");
+}
+
+function attachPizzaListeners() {
+  $("ul#current-order").on("click", "li", function() {
+    showPizza(this.id);
+  });
+  $("#buttons").on("click", ".deleteButton", function() {
+    order.deletePizza(this.id);
+    $("#pizza-details").hide();
+    displayOrder(order);
+  });
+};
+
 $(document).ready(function() {
+  attachPizzaListeners();
   $("form#new-pizza").submit(function(event) {
     event.preventDefault();
     var size = [];
@@ -76,7 +106,7 @@ $(document).ready(function() {
       console.log("toppings", toppings)
     }) // Tracks the pizza toppings the user selected
     var newPizza = new Pizza(size, toppings); // Creates a new Pizza object
-    order.addPizza(newPizza); //Adds the pizza to the order
-    console.log("Pizzas", order.pizzas);
+    order.addPizza(newPizza); // Adds the pizza to the order
+    displayOrder(order); // Displays all pizzas ordered
   })
-});
+})

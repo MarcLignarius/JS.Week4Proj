@@ -11,10 +11,17 @@ function onlyOne(checkbox) {
 
 function Order() {
   this.pizzas = [];
+  this.currentPizzaId = 0
 }
 
 Order.prototype.addPizza = function(pizza) {
+  pizza.id = this.assignPizzaId();
   this.pizzas.push(pizza);
+}
+
+Order.prototype.assignPizzaId = function() {
+  this.currentPizzaId += 1;
+  return this.currentPizzaId;
 }
 
 // Business Logic for Pizzas -------------------------------------------------

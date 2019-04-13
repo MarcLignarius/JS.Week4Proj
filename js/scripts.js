@@ -54,23 +54,23 @@ function Pizza(size, toppings, price) {
   this.toppings = toppings
 }
 
-Pizza.prototype.getPizzaPrice = function(newPizza) {
+Pizza.prototype.getPizzaPrice = function() {
   var price = 0;
-  if(newPizza.size === "small") {
-    newPizza.price += 8;
-  } else if(newPizza.size === "medium") {
-    newPizza.price += 10;
-  } else if(newPizza.size === "large") {
-      newPizza.price += 12;
-  } else if(newPizza.size === "extra large") {
-      newPizza.price += 14;
+  if(this.size === "small") {
+    this.price += 8;
+  } else if(this.size === "medium") {
+    this.price += 10;
+  } else if(this.size === "large") {
+      this.price += 12;
+  } else if(this.size === "extra large") {
+      this.price += 14;
   }
-  if (newPizza.toppings.length === 0) {
+  if (this.toppings.length === 0) {
     price += 0;
   } else {
-    price += newPizza.toppings.length;
+    price += this.toppings.length;
   }
-  return newPizza.price;
+  return this.price;
 };
 
 // User Interface Logic ---------
@@ -112,11 +112,8 @@ $(document).ready(function() {
   $("form#new-pizza").submit(function(event) {
     event.preventDefault();
     var price = "";
-    var size = [];
-    $("input:checkbox[name=size]:checked").each(function() {
-      size.push($(this).val());
-      console.log("size", size);
-    }) // Tracks the pizza size the user selected
+    var size = $("input:checkbox[name=size]:checked").val();
+    console.log("size", size); // Tracks the pizza size the user selected
     var toppings = [];
     $("input:checkbox[name=toppings]:checked").each(function() {
       toppings.push($(this).val());
@@ -124,7 +121,7 @@ $(document).ready(function() {
     }) // Tracks the pizza toppings the user selected
     var newPizza = new Pizza(size, toppings, price); // Creates a new Pizza object
     order.addPizza(newPizza); // Adds the pizza to the order
+    //getPizzaPrice(newPizza); // Adds price to pizza
     displayOrder(order); // Displays all pizzas ordered
-    getPizzaPrice(newPizza);
   })
 })

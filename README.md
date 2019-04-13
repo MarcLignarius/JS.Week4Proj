@@ -1,32 +1,33 @@
-# _{Application Name}_
+# _Pizza Ordering Website_
 
-#### _{Brief description of application}, {Date of current version}_
+#### _Epicodus Intro to Programming Week 4, 04/12/2019_
 
 #### By _**Marc Davies**_
 
 ## Description
 
-_{This is a detailed description of your application. Its purpose and usage.  Give as much detail as needed to explain what the application does, and any other information you want users or other developers to have. }_
+_This webpage offers a selection of sizes and toppings for pizzas. The user can add several pizzas to their order, and get an HTML display of their order along with a price total for the order_
 
 ## Setup/Installation Requirements
 
 * _Clone from GitHub_
 * _Open index.html_
-* _Alternatively, launch marclignarius.github.io/projectname_
+* _Alternatively, launch [https://marclignarius.github.io/week4proj](https://marclignarius.github.io/week4proj)_
 
 ## Specs
 
 | Behavior | Input | Output |
 | ------------- |:-------------:| -----:|
-| Lorem | x | true/false |
-| Lorem | x | true/false |
-| Lorem | x | true/false |
-| Lorem | x | true/false |
-| Lorem | x | true/false |
+| User can select a pizza size | Click Medium | True |
+| User can add one or more toppings | Click Mushrooms, Black Olives | true |
+| The program displays a list of the pizzas ordered | Create Pizza | Pizza displays |
+| The program outputs the price of each pizza | Create Pizza | Pizza price is displayed |
+| The user can click on a pizza to delete it | Click on a pizza then Delete | Pizza is deleted from order |
+
 
 ## Known Bugs
 
-_None as of last update_
+_The function for assigning a price to each pizza does not work at the moment._
 
 ## Support and contact details
 

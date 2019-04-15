@@ -1,4 +1,4 @@
-#pizza-details {
+#output {
   display: none;
 }
 
@@ -6,4 +6,21 @@ button {
   color: #fff;
   background-color: #343a40;
   border-color: #343a40;
+  margin-bottom: 20px;
+}
+
+.jumbotron {
+  background-image: url(https://img.freepik.com/free-photo/tasty-pepperoni-pizza-black-concrete-background_79782-102.jpg?size=626&ext=jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: right;
+  color: white;
+}
+
+body {
+  background-image: url(https://d1yn1kh78jj1rr.cloudfront.net/image/thumbnail/HZBWoNyubj6cad3ah/storyblocks-pizza-background-colorful-design-vector-illustration_r3gRzJNtSz_thumb.jpg);
+}
+
+.container {
+  background-color: white;
 }
